@@ -1,6 +1,6 @@
 FROM --platform=$TARGETOS/&TARGETARCH ibm-semeru-runtimes:open-16-jdk-focal
 
-LABEL author="Jumala9163" maintainer="Kome-Lab"
+LABEL author="jumala9163" maintainer="Kome-Lab"
 
 RUN useradd -d /home/container -m container
 
