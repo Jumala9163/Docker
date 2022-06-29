@@ -35,4 +35,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/kome-lab/yolks:ibm-java${{ matrix.tag }}
+            ghcr.io/jumala9163/yolks:ibm-java${{ matrix.tag }}
