@@ -2,10 +2,10 @@ FROM --platform=$TARGETOS/$TARGETARCH ibm-semeru-runtimes:open-16-jdk-focal
 
 LABEL author="Jumala9163" maintainer="Kome-Lab"
 
-RUN useradd -d /home/container -m container
-
 LABEL org.opencontainers.image.source="https://github.com/Jumala9163/Docker"
 LABEL org.opencontainers.image.licenses=MIT
+
+RUN useradd -d /home/container -m container
 
 ENV LANG=C.UTF-8
 
