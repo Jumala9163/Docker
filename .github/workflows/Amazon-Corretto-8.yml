@@ -1,0 +1,46 @@
+name: build Amazon-Corretto
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - Amazon-Corretto/Amazon-Corretto-8/**
+jobs:
+  push:
+    name: "yolks:amazon-corretto-${{ matrix.tag }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tag:
+          - '8'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set env
+        run: |
+          OWNER=$(echo ${{ github.repository_owner }})
+          echo "RELEASE_OWNER=$OWNER" >> $GITHUB_ENV
+          IMAGE=amazon-corretto-${{ matrix.tag }}
+          echo "RELEASE_IMAGE=$IMAGE" >> $GITHUB_ENV
+          VERSION=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
+          echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
+      - uses: docker/setup-qemu-action@v1
+      - uses: docker/setup-buildx-action@v1
+        with:
+          version: "v0.5.1"
+          buildkitd-flags: --debug
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUBTOKEN }}
+      - uses: docker/build-push-action@v2
+        with:
+          context: ./Amazon-Corretto/${{ matrix.tag }}
+          file: ./Amazon-Corretto/${{ matrix.tag }}/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: |
+            ghcr.io/jumala9163/yolks:Amazon-Corretto-${{ matrix.tag }}

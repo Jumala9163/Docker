@@ -6,10 +6,10 @@ on:
     branches:
       - main
     paths:
-      - IBM/16/**
+      - IBM-Semeru-Runtimes/IBM-Semeru-Runtimes-16/**
 jobs:
   push:
-    name: "yolks:ibm-semeru-runtimes-java${{ matrix.tag }}"
+    name: "yolks:ibm-semeru-runtimes-${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -38,9 +38,9 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v2
         with:
-          context: ./IBM/${{ matrix.tag }}
-          file: ./IBM/${{ matrix.tag }}/Dockerfile
+          context: ./IBM-Semeru-Runtimes/${{ matrix.tag }}
+          file: ./IBM-Semeru-Runtimes/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/jumala9163/yolks:ibm-java${{ matrix.tag }}
+            ghcr.io/jumala9163/yolks:IBM-Semeru-Runtimes-${{ matrix.tag }}
