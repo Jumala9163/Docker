@@ -27,7 +27,7 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v2
         with:
-          context: ./IBM-Semeru-Runtimes
+          context: ./IBM-Semeru-Runtimes/IBM-Semeru-Runtimes-${{ matrix.tag }}
           file: ./IBM-Semeru-Runtimes/IBM-Semeru-Runtimes-${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64
           push: true
