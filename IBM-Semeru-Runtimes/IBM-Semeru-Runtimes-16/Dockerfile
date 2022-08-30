@@ -20,6 +20,7 @@ RUN apt-get update -y \
 
 USER container
 ENV USER=container HOME=/home/container
+
 WORKDIR /home/container
 
 COPY entrypoint.sh /entrypoint.sh
