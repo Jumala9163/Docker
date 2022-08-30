@@ -2,6 +2,8 @@ FROM --platform=$TARGETOS/$TARGETARCH  debian:buster-slim
 
 LABEL author="Jumala9163" maintainer="Kome-Lab"
 
+RUN useradd -d /home/container -m container
+
 LABEL org.opencontainers.image.source="https://github.com/Jumala9163/Docker"
 LABEL org.opencontainers.image.licenses=MIT
 
