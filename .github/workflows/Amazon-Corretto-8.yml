@@ -5,8 +5,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      - Amazon-Corretto/Amazon-Corretto-8/**
+#    paths:
+#     - Amazon-Corretto/Amazon-Corretto-8/**
 jobs:
   push:
     name: "yolks:amazon-corretto-${{ matrix.tag }}"
@@ -38,8 +38,8 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v2
         with:
-          context: ./Amazon-Corretto/${{ matrix.tag }}
-          file: ./Amazon-Corretto/${{ matrix.tag }}/Dockerfile
+          context: ./Amazon-Corretto/Amazon-Corretto-${{ matrix.tag }}
+          file: ./Amazon-Corretto/Amazon-Corretto-${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
