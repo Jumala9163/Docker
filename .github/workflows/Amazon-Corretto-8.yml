@@ -6,7 +6,7 @@ on:
     branches:
       - main
 #    paths:
-#     - Amazon-Corretto/Amazon-Corretto-8/**
+#      - Amazon-Corretto/Amazon-Corretto-8/**
 jobs:
   push:
     name: "yolks:amazon-corretto-${{ matrix.tag }}"
@@ -43,4 +43,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/jumala9163/yolks:Amazon-Corretto-${{ matrix.tag }}
+            ghcr.io/jumala9163/yolks:amazon-corretto-${{ matrix.tag }}
