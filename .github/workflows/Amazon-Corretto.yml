@@ -1,0 +1,41 @@
+name: build Amazon-Corretto
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Amazon-Corretto/Amazon-Corretto-8/**'
+      - 'Amazon-Corretto/Amazon-Corretto-11/**'
+      - 'Amazon-Corretto/Amazon-Corretto-17/**'
+jobs:
+  push:
+    name: "yolks:amazon-corretto-${{ matrix.tag }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tag:
+          - '8'
+          - '11'
+          - '17'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker/setup-qemu-action@v1
+      - uses: docker/setup-buildx-action@v1
+        with:
+          version: "v0.5.1"
+          buildkitd-flags: --debug
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUBTOKEN }}
+      - uses: docker/build-push-action@v2
+        with:
+          context: ./Amazon-Corretto/Amazon-Corretto-${{ matrix.tag }}
+          file: ./Amazon-Corretto/Amazon-Corretto-${{ matrix.tag }}/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: |
+            ghcr.io/jumala9163/yolks:amazon-corretto-${{ matrix.tag }}

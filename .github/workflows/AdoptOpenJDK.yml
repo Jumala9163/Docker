@@ -1,18 +1,24 @@
-name: build Amazon-Corretto
+name: build AdoptOpenJDK
 on:
   workflow_dispatch:
   push:
     branches:
       - main
+    paths:
+      - 'AdoptOpenJDK/AdoptOpenJDK-8/**'
+      - 'AdoptOpenJDK/AdoptOpenJDK-11/**'
+      - 'AdoptOpenJDK/AdoptOpenJDK-16/**'
 jobs:
   push:
-    name: "yolks:amazon-corretto-${{ matrix.tag }}"
+    name: "yolks:adopt-open-jdk-${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         tag:
           - '8'
+          - '11'
+          - '16'
     steps:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1
@@ -27,9 +33,9 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v2
         with:
-          context: ./Amazon-Corretto/Amazon-Corretto-${{ matrix.tag }}
-          file: ./Amazon-Corretto/Amazon-Corretto-${{ matrix.tag }}/Dockerfile
+          context: ./AdoptOpenJDK/AdoptOpenJDK-${{ matrix.tag }}
+          file: ./AdoptOpenJDK/AdoptOpenJDK-${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/jumala9163/yolks:amazon-corretto-${{ matrix.tag }}
+            ghcr.io/jumala9163/yolks:adopt-open-jdk-${{ matrix.tag }}
