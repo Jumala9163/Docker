@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'IBM-Semeru-Runtimes/**'
 jobs:
   push:
     name: "yolks:ibm-semeru-runtimes-${{ matrix.tag }}"
