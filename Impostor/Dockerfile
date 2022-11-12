@@ -57,7 +57,7 @@ RUN powershell_version=7.2.7 \
 
 RUN apt-get update -y \
     && apt-get install -y sudo wget git curl unzip git build-essential \
-    ca-certificates openssl tar sqlite3 fontconfig tzdata iproute2 jq
+    ca-certificates openssl tar sqlite3 fontconfig iproute2 jq
 
 USER container
 ENV USER=container HOME=/home/container
