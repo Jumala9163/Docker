@@ -1,12 +1,9 @@
 name: build Impostor
-
 on:
   workflow_dispatch:
   push:
     branches:
       - main
-    paths:
-      - Impostor/**'
 jobs:
   push:
     name: "yolks:impostor"
