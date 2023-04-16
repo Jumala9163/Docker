@@ -1,4 +1,4 @@
-FROM --platform=$TARGETOS/$TARGETARCH ubuntu:20.04
+FROM --platform=$TARGETOS/$TARGETARCH ubuntu:22.04
 
 LABEL author="Jumala9163" maintainer="Kome-Lab"
 
@@ -10,27 +10,31 @@ RUN useradd -d /home/container -m container
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata curl ca-certificates fontconfig locales \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata curl ca-certificates fontconfig locales binutils \
     && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
     && locale-gen en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_VERSION jdk-16.0.2+7_openj9-0.27.0
+ENV JAVA_VERSION jdk-18.0.2+9_openj9-0.33.1
 
 RUN set -eux; \
     ARCH="$(dpkg --print-architecture)"; \
     case "${ARCH}" in \
-       ppc64el|ppc64le) \
-         ESUM='d5901996f2c0889b2b92de97fed0b36d5068da308be0fbd6c8293a6b6b91634d'; \
-         BINARY_URL='https://github.com/ibmruntimes/semeru16-binaries/releases/download/jdk-16.0.2%2B7_openj9-0.27.0/ibm-semeru-open-jdk_ppc64le_linux_16.0.2_7_openj9-0.27.0.tar.gz'; \
+       aarch64|arm64) \
+         ESUM='00e46a2b8be005eb03e3e4d939d4cf9b8331f22ee50ed75b84136d3f0ead7498'; \
+         BINARY_URL='https://github.com/ibmruntimes/semeru18-binaries/releases/download/jdk-18.0.2%2B9_openj9-0.33.1/ibm-semeru-open-jdk_aarch64_linux_18.0.2_9_openj9-0.33.1.tar.gz'; \
          ;; \
-       s390x) \
-         ESUM='3a2741a2e14b9934405a6c0b6af9e865687a70814af355e62dd84025707ccfdc'; \
-         BINARY_URL='https://github.com/ibmruntimes/semeru16-binaries/releases/download/jdk-16.0.2%2B7_openj9-0.27.0/ibm-semeru-open-jdk_s390x_linux_16.0.2_7_openj9-0.27.0.tar.gz'; \
+       ppc64el|ppc64le) \
+         ESUM='e111cee65c1487eb3421763f7d0fd69850e0dda34fbe295cae8b15c8219f1647'; \
+         BINARY_URL='https://github.com/ibmruntimes/semeru18-binaries/releases/download/jdk-18.0.2%2B9_openj9-0.33.1/ibm-semeru-open-jdk_ppc64le_linux_18.0.2_9_openj9-0.33.1.tar.gz'; \
          ;; \
        amd64|x86_64) \
-         ESUM='1349eb9a1d9af491a1984d66a80126730357c4a5c4fcbe7112a2c832f6c0886e'; \
-         BINARY_URL='https://github.com/ibmruntimes/semeru16-binaries/releases/download/jdk-16.0.2%2B7_openj9-0.27.0/ibm-semeru-open-jdk_x64_linux_16.0.2_7_openj9-0.27.0.tar.gz'; \
+         ESUM='b694d47666035b1f7870bc3749aa7c1903d50976eab3772fd81c32dab2aa8e64'; \
+         BINARY_URL='https://github.com/ibmruntimes/semeru18-binaries/releases/download/jdk-18.0.2%2B9_openj9-0.33.1/ibm-semeru-open-jdk_x64_linux_18.0.2_9_openj9-0.33.1.tar.gz'; \
+         ;; \
+       s390x) \
+         ESUM='ad75b32cff6d36a2c0e39bed435bc866b16836c71407fb10d51f483948819564'; \
+         BINARY_URL='https://github.com/ibmruntimes/semeru18-binaries/releases/download/jdk-18.0.2%2B9_openj9-0.33.1/ibm-semeru-open-jdk_s390x_linux_18.0.2_9_openj9-0.33.1.tar.gz'; \
          ;; \
        *) \
          echo "Unsupported arch: ${ARCH}"; \
@@ -46,7 +50,7 @@ RUN set -eux; \
 
 ENV JAVA_HOME=/opt/java/openjdk \
     PATH="/opt/java/openjdk/bin:$PATH"
-ENV JAVA_TOOL_OPTIONS="-XX:+IgnoreUnrecognizedVMOptions -XX:+IdleTuningGcOnIdle -Xshareclasses:name=openj9_system_scc,cacheDir=/opt/java/.scc,readonly,nonFatal"
+ENV JAVA_TOOL_OPTIONS="-XX:+IgnoreUnrecognizedVMOptions -XX:+PortableSharedCache -XX:+IdleTuningGcOnIdle -Xshareclasses:name=openj9_system_scc,cacheDir=/opt/java/.scc,readonly,nonFatal"
 
 # Create OpenJ9 SharedClassCache (SCC) for bootclasses to improve the java startup.
 # Downloads and runs tomcat to generate SCC for bootclasses at /opt/java/.scc/openj9_system_scc

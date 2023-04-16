@@ -1,4 +1,4 @@
-FROM --platform=$TARGETOS/$TARGETARCH  debian:buster-slim
+FROM --platform=$TARGETOS/$TARGETARCH ubuntu:22.04
 
 LABEL author="Jumala9163" maintainer="Kome-Lab"
 
@@ -7,7 +7,6 @@ LABEL org.opencontainers.image.licenses=MIT
 
 RUN useradd -d /home/container -m container
 
-ENV JAVA_VERSION jdk8u292-b10
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 RUN apt-get update \
@@ -16,43 +15,55 @@ RUN apt-get update \
     && locale-gen en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
 
+ENV JAVA_VERSION jdk8u362-b09
+
 RUN set -eux; \
     ARCH="$(dpkg --print-architecture)"; \
     case "${ARCH}" in \
        aarch64|arm64) \
-         ESUM='a29edaf66221f7a51353d3f28e1ecf4221268848260417bc562d797e514082a8'; \
-         BINARY_URL='https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_aarch64_linux_hotspot_8u292b10.tar.gz'; \
+         ESUM='9290a8beefd7a94f0eb030f62d402411a852100482b9c5b63714bacc57002c2a'; \
+         BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u362-b09/OpenJDK8U-jdk_aarch64_linux_hotspot_8u362b09.tar.gz'; \
          ;; \
-       armhf|armv7l) \
-         ESUM='0de107b7df38314c1daab78571383b8b39fdc506790aaef5d870b3e70048881b'; \
-         BINARY_URL='https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_arm_linux_hotspot_8u292b10.tar.gz'; \
+       armhf|arm) \
+         ESUM='039843c200d0773fe927fa07c368f23d1d74ae58edd09138c97aa1f5e2007b28'; \
+         BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u362-b09/OpenJDK8U-jdk_arm_linux_hotspot_8u362b09.tar.gz'; \
+         apt-get update \
+         && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libatomic1 \
+         && rm -rf /var/lib/apt/lists/* \
          ;; \
-       ppc64el|ppc64le) \
-         ESUM='7ecf00e57033296fd23201477a64dc13a1356b16a635907e104d079ddb544e4b'; \
-         BINARY_URL='https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_ppc64le_linux_hotspot_8u292b10.tar.gz'; \
+       ppc64el|powerpc:common64) \
+         ESUM='69658dd316c6a160915655971573179766e19c6610ea03880c1e578a0e518f74'; \
+         BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u362-b09/OpenJDK8U-jdk_ppc64le_linux_hotspot_8u362b09.tar.gz'; \
          ;; \
-       s390x) \
-         ESUM='276a431c79b7e94bc1b1b4fd88523383ae2d635ea67114dfc8a6174267f8fb2c'; \
-         BINARY_URL='https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_s390x_linux_hotspot_8u292b10.tar.gz'; \
-         ;; \
-       amd64|x86_64) \
-         ESUM='0949505fcf42a1765558048451bb2a22e84b3635b1a31dd6191780eeccaa4ada'; \
-         BINARY_URL='https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u292-b10/OpenJDK8U-jdk_x64_linux_hotspot_8u292b10.tar.gz'; \
+       amd64|i386:x86-64) \
+         ESUM='1486a792fb224611ce0cd0e83d4aacd3503b56698549f8e9a9f0a6ebb83bdba1'; \
+         BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u362-b09/OpenJDK8U-jdk_x64_linux_hotspot_8u362b09.tar.gz'; \
          ;; \
        *) \
          echo "Unsupported arch: ${ARCH}"; \
          exit 1; \
          ;; \
     esac; \
-    curl -LfsSo /tmp/openjdk.tar.gz ${BINARY_URL}; \
-    echo "${ESUM} */tmp/openjdk.tar.gz" | sha256sum -c -; \
-    mkdir -p /opt/java/openjdk; \
-    cd /opt/java/openjdk; \
-    tar -xf /tmp/openjdk.tar.gz --strip-components=1; \
-    rm -rf /tmp/openjdk.tar.gz;
+	  wget -O /tmp/openjdk.tar.gz ${BINARY_URL}; \
+	  echo "${ESUM} */tmp/openjdk.tar.gz" | sha256sum -c -; \
+	  mkdir -p "$JAVA_HOME"; \
+	  tar --extract \
+	      --file /tmp/openjdk.tar.gz \
+	      --directory "$JAVA_HOME" \
+	      --strip-components 1 \
+	      --no-same-owner \
+	  ; \
+    rm -f /tmp/openjdk.tar.gz ${JAVA_HOME}/src.zip; \
+    find "$JAVA_HOME/lib" -name '*.so' -exec dirname '{}' ';' | sort -u > /etc/ld.so.conf.d/docker-openjdk.conf; \
+    ldconfig;
 
-ENV JAVA_HOME=/opt/java/openjdk \
-    PATH="/opt/java/openjdk/bin:$PATH"
+RUN echo Verifying install ... \
+    && echo javac -version && javac -version \
+    && echo java -version && java -version \
+    && echo Complete.
+
+ENV JAVA_HOME /opt/java/openjdk
+ENV PATH $JAVA_HOME/bin:$PATH
 
 RUN apt-get update -y \
     && apt-get install -y sudo wget git unzip git build-essential \
