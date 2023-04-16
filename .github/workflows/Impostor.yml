@@ -10,8 +10,6 @@ jobs:
   push:
     name: "yolks:impostor"
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
     steps:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1

@@ -8,6 +8,10 @@ on:
       - 'AdoptOpenJDK/AdoptOpenJDK-8/**'
       - 'AdoptOpenJDK/AdoptOpenJDK-11/**'
       - 'AdoptOpenJDK/AdoptOpenJDK-16/**'
+      - 'AdoptOpenJDK/AdoptOpenJDK-17/**'
+      - 'AdoptOpenJDK/AdoptOpenJDK-18/**'
+      - 'AdoptOpenJDK/AdoptOpenJDK-19/**'
+      - 'AdoptOpenJDK/AdoptOpenJDK-20/**'
 jobs:
   push:
     name: "yolks:adopt-open-jdk-${{ matrix.tag }}"
@@ -19,6 +23,10 @@ jobs:
           - '8'
           - '11'
           - '16'
+          - '17'
+          - '18'
+          - '19'
+          - '20'
     steps:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1
