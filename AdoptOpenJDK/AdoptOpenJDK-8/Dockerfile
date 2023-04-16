@@ -7,10 +7,14 @@ LABEL org.opencontainers.image.licenses=MIT
 
 RUN useradd -d /home/container -m container
 
+ENV JAVA_HOME /opt/java/openjdk
+ENV PATH $JAVA_HOME/bin:$PATH
+
+# Default to UTF-8 file.encoding
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata curl ca-certificates fontconfig locales \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata curl wget ca-certificates fontconfig locales \
     && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
     && locale-gen en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
@@ -27,6 +31,7 @@ RUN set -eux; \
        armhf|arm) \
          ESUM='039843c200d0773fe927fa07c368f23d1d74ae58edd09138c97aa1f5e2007b28'; \
          BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u362-b09/OpenJDK8U-jdk_arm_linux_hotspot_8u362b09.tar.gz'; \
+         # Fixes libatomic.so.1: cannot open shared object file
          apt-get update \
          && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libatomic1 \
          && rm -rf /var/lib/apt/lists/* \
@@ -54,6 +59,7 @@ RUN set -eux; \
 	      --no-same-owner \
 	  ; \
     rm -f /tmp/openjdk.tar.gz ${JAVA_HOME}/src.zip; \
+# https://github.com/docker-library/openjdk/issues/331#issuecomment-498834472
     find "$JAVA_HOME/lib" -name '*.so' -exec dirname '{}' ';' | sort -u > /etc/ld.so.conf.d/docker-openjdk.conf; \
     ldconfig;
 
@@ -61,9 +67,6 @@ RUN echo Verifying install ... \
     && echo javac -version && javac -version \
     && echo java -version && java -version \
     && echo Complete.
-
-ENV JAVA_HOME /opt/java/openjdk
-ENV PATH $JAVA_HOME/bin:$PATH
 
 RUN apt-get update -y \
     && apt-get install -y sudo wget git unzip git build-essential \
