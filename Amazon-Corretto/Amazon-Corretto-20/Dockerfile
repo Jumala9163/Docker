@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.licenses=MIT
 
 RUN useradd -d /home/container -m container
 
-ARG version=20.0.0.36-1
+ARG version=20.0.2.10-1
 
 RUN set -eux \
     && apt-get update \
@@ -25,8 +25,7 @@ ENV LANG C.UTF-8
 ENV JAVA_HOME=/usr/lib/jvm/java-20-amazon-corretto
 
 RUN apt-get update -y \
-    && apt-get install -y sudo wget git curl unzip git build-essential \
-    ca-certificates openssl tar sqlite3 fontconfig tzdata iproute2 jq
+    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6
 
 USER container
 ENV USER=container HOME=/home/container
