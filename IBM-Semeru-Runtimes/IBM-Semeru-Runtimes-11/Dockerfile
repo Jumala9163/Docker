@@ -15,40 +15,41 @@ RUN apt-get update \
     && locale-gen en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_VERSION 11.0.18.0
+ENV JAVA_VERSION 11.0.22.0
 
 RUN set -eux; \
     ARCH="$(dpkg --print-architecture)"; \
     case "${ARCH}" in \
        amd64|x86_64) \
-         ESUM='563d724aeedfb9e1afd1d3d37fd7bd7fd2873148204ed95f4a949c8e1add801a'; \
-         BINARY_URL='https://github.com/ibmruntimes/semeru11-certified-binaries/releases/download/jdk-11.0.18%2B10_openj9-0.36.1/ibm-semeru-certified-jdk_x64_linux_11.0.18.0-archive.bin'; \
+         ESUM='a1fc6535595c709e5e24f8b91369c339bc4c9ecc326c8670a01211dd81e227ef'; \
+         BINARY_URL='https://github.com/ibmruntimes/semeru11-certified-binaries/releases/download/jdk-11.0.22%2B7_openj9-0.43.0/ibm-semeru-certified-jdk_x64_linux_11.0.22.0.tar.gz'; \
          ;; \
        ppc64el|ppc64le) \
-         ESUM='9b15f172132812e1a210cc0765f14d32efbd60fd2b3267fc42dd8405712b2efb'; \
-         BINARY_URL='https://github.com/ibmruntimes/semeru11-certified-binaries/releases/download/jdk-11.0.18%2B10_openj9-0.36.1/ibm-semeru-certified-jdk_ppc64le_linux_11.0.18.0-archive.bin'; \
+         ESUM='04681828b048187aca03a4f33a41dae06562d82e8e7c0e80a0954d97c0436935'; \
+         BINARY_URL='https://github.com/ibmruntimes/semeru11-certified-binaries/releases/download/jdk-11.0.22%2B7_openj9-0.43.0/ibm-semeru-certified-jdk_ppc64le_linux_11.0.22.0.tar.gz'; \
          ;; \
        s390x) \
-         ESUM='fcd9ff5fee7505a5d9b794ddb69fea2e79b99abda318d046e49c80255cfbf418'; \
-         BINARY_URL='https://github.com/ibmruntimes/semeru11-certified-binaries/releases/download/jdk-11.0.18%2B10_openj9-0.36.1/ibm-semeru-certified-jdk_s390x_linux_11.0.18.0-archive.bin'; \
+         ESUM='397bb336805eff9ad366cfa850394be84e287e7f175550c2e4c4fa2f89c4eb9b'; \
+         BINARY_URL='https://github.com/ibmruntimes/semeru11-certified-binaries/releases/download/jdk-11.0.22%2B7_openj9-0.43.0/ibm-semeru-certified-jdk_s390x_linux_11.0.22.0.tar.gz'; \
+         ;; \
+       aarch64|arm64) \
+         ESUM='859bbc29b4a2e60f4babc6b23b65eaf06f01c0123f9e7394179a98f6663edfce'; \
+         BINARY_URL='https://github.com/ibmruntimes/semeru11-certified-binaries/releases/download/jdk-11.0.22%2B7_openj9-0.43.0/ibm-semeru-certified-jdk_aarch64_linux_11.0.22.0.tar.gz'; \
          ;; \
        *) \
          echo "Unsupported arch: ${ARCH}"; \
          exit 1; \
          ;; \
     esac; \
-    curl -LfsSo /tmp/ibm-java.bin ${BINARY_URL}; \
-    echo "${ESUM}  /tmp/ibm-java.bin" | sha256sum -c -; \
-    echo "INSTALLER_UI=silent" > /tmp/response.properties; \
-    echo "USER_INSTALL_DIR=/opt/ibm" >> /tmp/response.properties; \
-    echo "LICENSE_ACCEPTED=TRUE" >> /tmp/response.properties; \
-    mkdir -p /opt/ibm; \
-    chmod +x /tmp/ibm-java.bin; \
-    /tmp/ibm-java.bin -i silent -f /tmp/response.properties; \
-    mv /opt/ibm/jdk-* /opt/ibm/java; \
-    rm -f /tmp/response.properties; \
-    rm -f /tmp/index.yml; \
-    rm -f /tmp/ibm-java.bin;
+    curl -LfsSo /tmp/openjdk.tar.gz ${BINARY_URL}; \
+    echo "${ESUM} */tmp/openjdk.tar.gz" | sha256sum -c -; \
+    mkdir -p /opt/ibm/; \
+    cd /opt/ibm/; \
+    tar -xf /tmp/openjdk.tar.gz ; \
+    mkdir -p /licenses; \
+    mv /opt/ibm/jdk-11* /opt/ibm/java; \
+    cp /opt/ibm/java/legal/java.base/license/license_en.txt /licenses; \
+    rm -rf /tmp/openjdk.tar.gz;
 
 ENV JAVA_HOME=/opt/ibm/java \
     PATH="/opt/ibm/java/bin:$PATH"
@@ -65,8 +66,8 @@ RUN set -eux; \
     SCC_SIZE="50m"; \
     DOWNLOAD_PATH_TOMCAT=/tmp/tomcat; \
     INSTALL_PATH_TOMCAT=/opt/tomcat-home; \
-    TOMCAT_CHECKSUM="0db27185d9fc3174f2c670f814df3dda8a008b89d1a38a5d96cbbe119767ebfb1cf0bce956b27954aee9be19c4a7b91f2579d967932207976322033a86075f98"; \
-    TOMCAT_DWNLD_URL="https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.35/bin/apache-tomcat-9.0.35.tar.gz"; \
+    TOMCAT_CHECKSUM="06e239d15ff7b72017c1d0752ddb1be4651374f7c1391631ec5619f4981cb2911267bc6b044d6c71a2a74738f70d433b96418951439848121f1d874862ddd3de"; \
+    TOMCAT_DWNLD_URL="https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.85/bin/apache-tomcat-9.0.85.tar.gz"; \
     \
     mkdir -p "${DOWNLOAD_PATH_TOMCAT}" "${INSTALL_PATH_TOMCAT}"; \
     curl -LfsSo "${DOWNLOAD_PATH_TOMCAT}"/tomcat.tar.gz "${TOMCAT_DWNLD_URL}"; \
@@ -75,7 +76,7 @@ RUN set -eux; \
     rm -rf "${DOWNLOAD_PATH_TOMCAT}"; \
     \
     java -Xshareclasses:name=dry_run_scc,cacheDir=/opt/ibm/java/.scc,bootClassesOnly,nonFatal,createLayer -Xscmx$SCC_SIZE -version; \
-    export OPENJ9_JAVA_OPTIONS="-Xshareclasses:name=dry_run_scc,cacheDir=/opt/ibm/java/.scc,bootClassesOnly,nonFatal"; \
+    export OPENJ9_JAVA_OPTIONS="-XX:+IProfileDuringStartupPhase -Xshareclasses:name=dry_run_scc,cacheDir=/opt/ibm/java/.scc,bootClassesOnly,nonFatal"; \
     "${INSTALL_PATH_TOMCAT}"/bin/startup.sh; \
     sleep 5; \
     "${INSTALL_PATH_TOMCAT}"/bin/shutdown.sh -force; \
@@ -89,7 +90,7 @@ RUN set -eux; \
     java -Xshareclasses:name=openj9_system_scc,cacheDir=/opt/ibm/java/.scc,bootClassesOnly,nonFatal,createLayer -Xscmx$SCC_SIZE -version; \
     unset OPENJ9_JAVA_OPTIONS; \
     \
-    export OPENJ9_JAVA_OPTIONS="-Xshareclasses:name=openj9_system_scc,cacheDir=/opt/ibm/java/.scc,bootClassesOnly,nonFatal"; \
+    export OPENJ9_JAVA_OPTIONS="-XX:+IProfileDuringStartupPhase -Xshareclasses:name=openj9_system_scc,cacheDir=/opt/ibm/java/.scc,bootClassesOnly,nonFatal"; \
     "${INSTALL_PATH_TOMCAT}"/bin/startup.sh; \
     sleep 5; \
     "${INSTALL_PATH_TOMCAT}"/bin/shutdown.sh -force; \
@@ -104,8 +105,7 @@ RUN set -eux; \
     echo "SCC generation phase completed";
 
 RUN apt-get update -y \
-    && apt-get install -y sudo wget git curl unzip git build-essential \
-    ca-certificates openssl tar sqlite3 fontconfig tzdata iproute2 jq
+    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6
 
 USER container
 ENV USER=container HOME=/home/container
