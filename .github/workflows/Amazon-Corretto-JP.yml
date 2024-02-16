@@ -15,7 +15,7 @@ on:
       - 'Amazon-Corretto-JP/Amazon-Corretto-21_JP/**'
 jobs:
   push:
-    name: "yolks:amazon-corretto-${{ matrix.tag }}"
+    name: "yolks:amazon-corretto-${{ matrix.tag }}_jp"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
