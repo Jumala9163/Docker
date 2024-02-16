@@ -15,20 +15,20 @@ on:
       - 'Amazon-Corretto-JP/Amazon-Corretto-21_JP/**'
 jobs:
   push:
-    name: "yolks:amazon-corretto-${{ matrix.tag }}_jp"
+    name: "yolks:amazon-corretto-${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         tag:
-          - '8_jp'
-          - '11_jp'
-          - '16_jp'
-          - '17_jp'
-          - '18_jp'
-          - '19_jp'
-          - '20_jp'
-          - '21_jp'
+          - '8'
+          - '11'
+          - '16'
+          - '17'
+          - '18'
+          - '19'
+          - '20'
+          - '21'
     steps:
       - uses: actions/checkout@v4
       - uses: docker/setup-qemu-action@v3
@@ -43,7 +43,7 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v5
         with:
-          context: ./Amazon-Corretto-JP/Amazon-Corretto-${{ matrix.tag }}_JP
+          context: ./Amazon-Corretto-JP/Amazon-Corretto-${{ matrix.tag }}_jp
           file: ./Amazon-Corretto-JP/Amazon-Corretto-${{ matrix.tag }}_JP/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
