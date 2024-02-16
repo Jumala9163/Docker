@@ -5,14 +5,14 @@ on:
     branches:
       - main
     paths:
-      - 'Amazon-Corretto/Amazon-Corretto-8_JP/**'
-      - 'Amazon-Corretto/Amazon-Corretto-11_JP/**'
-      - 'Amazon-Corretto/Amazon-Corretto-16_JP/**'
-      - 'Amazon-Corretto/Amazon-Corretto-17_JP/**'
-      - 'Amazon-Corretto/Amazon-Corretto-18_JP/**'
-      - 'Amazon-Corretto/Amazon-Corretto-19_JP/**'
-      - 'Amazon-Corretto/Amazon-Corretto-20_JP/**'
-      - 'Amazon-Corretto/Amazon-Corretto-21_JP/**'
+      - 'Amazon-Corretto-JP/Amazon-Corretto-8_JP/**'
+      - 'Amazon-Corretto-JP/Amazon-Corretto-11_JP/**'
+      - 'Amazon-Corretto-JP/Amazon-Corretto-16_JP/**'
+      - 'Amazon-Corretto-JP/Amazon-Corretto-17_JP/**'
+      - 'Amazon-Corretto-JP/Amazon-Corretto-18_JP/**'
+      - 'Amazon-Corretto-JP/Amazon-Corretto-19_JP/**'
+      - 'Amazon-Corretto-JP/Amazon-Corretto-20_JP/**'
+      - 'Amazon-Corretto-JP/Amazon-Corretto-21_JP/**'
 jobs:
   push:
     name: "yolks:amazon-corretto-${{ matrix.tag }}_jp"
