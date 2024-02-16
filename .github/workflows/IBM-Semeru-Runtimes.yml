@@ -9,9 +9,6 @@ on:
       - 'IBM-Semeru-Runtimes/IBM-Semeru-Runtimes-11/**'
       - 'IBM-Semeru-Runtimes/IBM-Semeru-Runtimes-16/**'
       - 'IBM-Semeru-Runtimes/IBM-Semeru-Runtimes-17/**'
-      - 'IBM-Semeru-Runtimes/IBM-Semeru-Runtimes-18/**'
-      - 'IBM-Semeru-Runtimes/IBM-Semeru-Runtimes-19/**'
-      - 'IBM-Semeru-Runtimes/IBM-Semeru-Runtimes-20/**'
       - 'IBM-Semeru-Runtimes/IBM-Semeru-Runtimes-21/**'
 jobs:
   push:
@@ -25,9 +22,6 @@ jobs:
           - '11'
           - '16'
           - '17'
-          - '18'
-          - '19'
-          - '20'
           - '21'
     steps:
       - uses: actions/checkout@v4
