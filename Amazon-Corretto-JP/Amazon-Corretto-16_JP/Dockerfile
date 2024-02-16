@@ -33,6 +33,7 @@ RUN set -ux \
 ENV LANG="ja_JP.UTF-8"
 ENV LANGUAGE="ja_JP:ja"
 ENV LC_ALL="ja_JP.UTF-8"
+
 ENV JAVA_HOME=/usr/lib/jvm/java-16-amazon-corretto
 
 RUN apt-get update -y \
