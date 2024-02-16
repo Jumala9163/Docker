@@ -43,7 +43,7 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v5
         with:
-          context: ./Amazon-Corretto-JP/Amazon-Corretto-${{ matrix.tag }}_jp
+          context: ./Amazon-Corretto-JP/Amazon-Corretto-${{ matrix.tag }}_JP
           file: ./Amazon-Corretto-JP/Amazon-Corretto-${{ matrix.tag }}_JP/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
