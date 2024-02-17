@@ -24,8 +24,7 @@ RUN set -eux \
 ENV JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
 
 RUN apt-get update -y \
-    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 locales \
-    && locale-gen ja_JP
+    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 language-pack-ja
 
 ENV LC_ALL="ja_JP.UTF-8"
 ENV LANG="ja_JP.UTF-8"
