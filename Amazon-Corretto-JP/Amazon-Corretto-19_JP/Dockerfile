@@ -23,6 +23,9 @@ RUN set -eux \
 
 ENV JAVA_HOME=/usr/lib/jvm/java-19-amazon-corretto
 
+ENV TZ=Asia/Tokyo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt-get update -y \
     && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 language-pack-ja-base language-pack-ja \
     && locale-gen ja_JP.UTF-8
