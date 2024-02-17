@@ -29,15 +29,16 @@ RUN set -ux \
     update-alternatives --install /usr/bin/$i $i /usr/lib/jvm/java-16-amazon-corretto/bin/$i ${priority}; \
     done
 
+ENV JAVA_HOME=/usr/lib/jvm/java-16-amazon-corretto
+
+RUN apt-get update -y \
+    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 locales
+
+RUN locale-gen ja_JP.UTF-8
 
 ENV LANG="ja_JP.UTF-8"
 ENV LANGUAGE="ja_JP:ja"
 ENV LC_ALL="ja_JP.UTF-8"
-
-ENV JAVA_HOME=/usr/lib/jvm/java-16-amazon-corretto
-
-RUN apt-get update -y \
-    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6
 
 USER container
 ENV USER=container HOME=/home/container

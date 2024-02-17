@@ -21,14 +21,16 @@ RUN set -eux \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
         curl gnupg software-properties-common
 
-ENV LANG="ja_JP.UTF-8"
-ENV LANGUAGE="ja_JP:ja"
-ENV LC_ALL="ja_JP.UTF-8"
-
 ENV JAVA_HOME=/usr/lib/jvm/java-18-amazon-corretto
 
 RUN apt-get update -y \
-    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6
+    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 locales
+
+RUN locale-gen ja_JP.UTF-8
+
+ENV LANG="ja_JP.UTF-8"
+ENV LANGUAGE="ja_JP:ja"
+ENV LC_ALL="ja_JP.UTF-8"
 
 USER container
 ENV USER=container HOME=/home/container
