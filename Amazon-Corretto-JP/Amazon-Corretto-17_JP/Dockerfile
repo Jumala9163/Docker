@@ -24,13 +24,12 @@ RUN set -eux \
 ENV JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto
 
 RUN apt-get update -y \
-    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 locales
+    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 locales \
+    && locale-gen ja_JP.UTF-8
 
-RUN locale-gen ja_JP.UTF-8
-
+ENV LC_ALL="ja_JP.UTF-8"
 ENV LANG="ja_JP.UTF-8"
 ENV LANGUAGE="ja_JP:ja"
-ENV LC_ALL="ja_JP.UTF-8"
 
 USER container
 ENV USER=container HOME=/home/container
