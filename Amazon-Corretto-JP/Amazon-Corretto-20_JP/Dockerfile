@@ -1,4 +1,4 @@
-FROM --platform=$TARGETOS/$TARGETARCH  debian:buster-slim
+FROM --platform=$TARGETOS/$TARGETARCH ubuntu:22.04
 
 LABEL author="Jumala9163" maintainer="Kome-Lab"
 
@@ -24,7 +24,8 @@ RUN set -eux \
 ENV JAVA_HOME=/usr/lib/jvm/java-20-amazon-corretto
 
 RUN apt-get update -y \
-    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 language-pack-ja
+    && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 language-pack-ja-base language-pack-ja \
+    && locale-gen ja_JP.UTF-8
 
 ENV LC_ALL="ja_JP.UTF-8"
 ENV LANG="ja_JP.UTF-8"
