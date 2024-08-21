@@ -27,7 +27,7 @@ ENV TZ=Asia/Tokyo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update -y \
-    && apt-get install -y ffmpeg python3-pip python3.11 lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 language-pack-ja-base language-pack-ja \
+    && apt-get install -y ffmpeg python3-pip python3.10 lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 language-pack-ja-base language-pack-ja \
     && locale-gen ja_JP.UTF-8
 
 ENV LC_ALL="ja_JP.UTF-8"
