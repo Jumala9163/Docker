@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.licenses=MIT
 
 RUN useradd -d /home/container -m container
 
-ARG version=22.0.0.37-1
+ARG version=22.0.2.9-1
 
 RUN set -eux \
     && apt-get update \
@@ -21,8 +21,8 @@ RUN set -eux \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
         curl gnupg software-properties-common
 
-ENV LANG C.UTF-8
-ENV JAVA_HOME=/usr/lib/jvm/java-22-amazon-corretto
+ENV LANG=C.UTF-8
+ENV JAVA_HOME=/usr/lib/jvm/java-23-amazon-corretto
 
 RUN apt-get update -y \
     && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6
