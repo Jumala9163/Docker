@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.licenses=MIT
 
 RUN useradd -d /home/container -m container
 
-ARG version=21.0.6.7-1
+ARG version=23.0.2.7-1
 
 RUN set -eux \
     && apt-get update \
@@ -17,11 +17,11 @@ RUN set -eux \
     && add-apt-repository 'deb https://apt.corretto.aws stable main' \
     && mkdir -p /usr/share/man/man1 || true \
     && apt-get update \
-    && apt-get install -y java-21-amazon-corretto-jdk=1:$version \
+    && apt-get install -y java-23-amazon-corretto-jdk=1:$version \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
         curl gnupg software-properties-common
 
-ENV JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
+ENV JAVA_HOME=/usr/lib/jvm/java-23-amazon-corretto
 
 ENV TZ=Asia/Tokyo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
