@@ -1,4 +1,4 @@
-name: build JMusicBOT-JP
+name: build VOICEVOX_engine
 on:
   workflow_dispatch:
   push:
