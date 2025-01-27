@@ -1,0 +1,33 @@
+name: build JMusicBOT-JP
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'VOICEVOX_engine/**'
+jobs:
+  push:
+    name: "yolks:voicevox-engine"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+        with:
+          buildkitd-flags: --debug
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUBTOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./VOICEVOX_engine
+          file: ./VOICEVOX_engine/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/jumala9163/yolks:voicevox-engine
