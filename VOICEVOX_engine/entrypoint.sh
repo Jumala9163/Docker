@@ -8,6 +8,8 @@ export INTERNAL_IP
 
 # Display README for engine
 cat /opt/voicevox_engine/README.md > /dev/stderr
+nvidia-smi > /dev/stderr
+nvcc -V > /dev/stderr
 
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')

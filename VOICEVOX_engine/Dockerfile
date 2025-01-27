@@ -292,9 +292,11 @@ RUN <<EOF
 EOF
 
 
-RUN         apt update \
+RUN         wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.1-1_all.deb \
+            && dpkg -i cuda-keyring_1.1-1_all.deb \
+            && apt update \
             && apt -y install git gcc g++ ca-certificates dnsutils curl iproute2 ffmpeg procps tini \
-            mtr traceroute fping build-essential
+            mtr traceroute fping build-essential nvidia-headless-550 nvidia-utils-550 cuda-toolkit-12-8
 
 USER        container
 ENV         USER=container HOME=/home/container
