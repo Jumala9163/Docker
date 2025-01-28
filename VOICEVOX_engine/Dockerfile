@@ -24,7 +24,7 @@ EOF
 
 # assert VOICEVOX_CORE_VERSION >= 0.11.0 (ONNX)
 ARG TARGETPLATFORM
-ARG USE_GPU=false
+ARG USE_GPU=true
 ARG VOICEVOX_CORE_VERSION=0.15.7
 
 RUN <<EOF
@@ -85,7 +85,7 @@ RUN <<EOF
 EOF
 
 ARG TARGETPLATFORM
-ARG USE_GPU=false
+ARG USE_GPU=true
 ARG ONNXRUNTIME_VERSION=1.13.1
 RUN <<EOF
     set -eux
@@ -292,11 +292,9 @@ RUN <<EOF
 EOF
 
 
-RUN         wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.1-1_all.deb \
-            && dpkg -i cuda-keyring_1.1-1_all.deb \
-            && apt update \
+RUN         apt update \
             && apt -y install git gcc g++ ca-certificates dnsutils curl iproute2 ffmpeg procps tini \
-            mtr traceroute fping build-essential nvidia-headless-550 nvidia-utils-550 cuda-toolkit-12-8
+            mtr traceroute fping build-essential
 
 USER        container
 ENV         USER=container HOME=/home/container
