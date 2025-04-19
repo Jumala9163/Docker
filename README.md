@@ -2,44 +2,46 @@
 
 Pterodactylで使える各種イメージ
 
-- [AdoptOpenJDK](https://github.com/Jumala9163/Docker/tree/main/AdoptOpenJDK/)
+- [EclipseAdoptium](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/)
 - [AmazonCorretto](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto/)
 - [AmazonCorretto-JP](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/)
 - [JMusicBOT-JP](https://github.com/Jumala9163/Docker/tree/main/Discord/JMusicBOT-JP)
 
-### AdoptOpenJDK
+## イメージ一覧
+
+### EclipseAdoptium
 
 ---
 
-・[8](https://github.com/Jumala9163/Docker/tree/main/AdoptOpenJDK/AdoptOpenJDK-8)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-8`
+・[8](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/EclipseAdoptium-8)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-8`
 
-・[11](https://github.com/Jumala9163/Docker/tree/main/AdoptOpenJDK/AdoptOpenJDK-11)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-11`
+・[11](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/EclipseAdoptium-11)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-11`
 
-・[16](https://github.com/Jumala9163/Docker/tree/main/AdoptOpenJDK/AdoptOpenJDK-16)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-16`
+・[16](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/EclipseAdoptium-16)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-16`
 
-・[17](https://github.com/Jumala9163/Docker/tree/main/AdoptOpenJDK/AdoptOpenJDK-17)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-17`
+・[17](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/EclipseAdoptium-17)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-17`
 
-・[18](https://github.com/Jumala9163/Docker/tree/main/AdoptOpenJDK/AdoptOpenJDK-18)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-18`
+・[18](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/EclipseAdoptium-18)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-18`
 
-・[19](https://github.com/Jumala9163/Docker/tree/main/AdoptOpenJDK/AdoptOpenJDK-19)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-19`
+・[19](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/EclipseAdoptium-19)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-19`
 
-・[20](https://github.com/Jumala9163/Docker/tree/main/AdoptOpenJDK/AdoptOpenJDK-20)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-20`
+・[20](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/EclipseAdoptium-20)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-20`
 
-・[21](https://github.com/Jumala9163/Docker/tree/main/AdoptOpenJDK/AdoptOpenJDK-21)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-21`
+・[21](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/EclipseAdoptium-21)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-21`
 
-・[22](https://github.com/Jumala9163/Docker/tree/main/AdoptOpenJDK/AdoptOpenJDK-22)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-22`
+・[22](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/EclipseAdoptium-22)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-22`
 
-・[23](https://github.com/Jumala9163/Docker/tree/main/AdoptOpenJDK/AdoptOpenJDK-23)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-23`
+・[23](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/EclipseAdoptium-23)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-23`
 
 ### AmazonCorretto
 
@@ -80,34 +82,34 @@ Pterodactylで使える各種イメージ
 ---
 
 ・[8](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-8_JP)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-8_jp`
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-8_jp`
 
 ・[11](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-11_JP)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-11_jp`
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-11_jp`
 
 ・[16](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-16_JP)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-16_jp`
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-16_jp`
 
 ・[17](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-17_JP)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-17_jp`
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-17_jp`
 
 ・[18](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-18_JP)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-18_jp`
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-18_jp`
 
 ・[19](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-19_JP)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-19_jp`
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-19_jp`
 
 ・[20](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-20_JP)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-20_jp`
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-20_jp`
 
 ・[21](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-21_JP)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-21_jp`
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-21_jp`
 
 ・[22](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-22_JP)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-22_jp`
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-22_jp`
 
 ・[23](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-23_JP)\
-`ghcr.io/jumala9163/yolks:adopt-open-jdk-23_jp`
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-23_jp`
 
 ## JMusicBOT-JP
 

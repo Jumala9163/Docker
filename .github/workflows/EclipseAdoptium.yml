@@ -1,0 +1,56 @@
+name: build EclipseAdoptium
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'EclipseAdoptium/EclipseAdoptium-8/**'
+      - 'EclipseAdoptium/EclipseAdoptium-11/**'
+      - 'EclipseAdoptium/EclipseAdoptium-16/**'
+      - 'EclipseAdoptium/EclipseAdoptium-17/**'
+      - 'EclipseAdoptium/EclipseAdoptium-18/**'
+      - 'EclipseAdoptium/EclipseAdoptium-19/**'
+      - 'EclipseAdoptium/EclipseAdoptium-20/**'
+      - 'EclipseAdoptium/EclipseAdoptium-21/**'
+      - 'EclipseAdoptium/EclipseAdoptium-22/**'
+      - 'EclipseAdoptium/EclipseAdoptium-23/**'
+      - 'EclipseAdoptium/EclipseAdoptium-24/**'
+jobs:
+  push:
+    name: "yolks:eclipse-adoptium-${{ matrix.tag }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tag:
+          - '8'
+          - '11'
+          - '16'
+          - '17'
+          - '18'
+          - '19'
+          - '20'
+          - '21'
+          - '22'
+          - '23'
+          - '24'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+        with:
+          buildkitd-flags: --debug
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUBTOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./EclipseAdoptium/EclipseAdoptium-${{ matrix.tag }}
+          file: ./EclipseAdoptium/EclipseAdoptium-${{ matrix.tag }}/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/jumala9163/yolks:eclipse-adoptium-${{ matrix.tag }}

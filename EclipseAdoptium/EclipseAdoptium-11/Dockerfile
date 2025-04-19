@@ -36,30 +36,30 @@ RUN set -eux; \
     locale-gen en_US.UTF-8; \
     rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_VERSION=jdk8u432-b06
+ENV JAVA_VERSION=jdk-11.0.27+6
 
 RUN set -eux; \
     ARCH="$(dpkg --print-architecture)"; \
     case "${ARCH}" in \
        amd64) \
-         ESUM='abaaa90deadf51bd28921453baf2992b3dff6171bb7142f5bdd14ef269f7b245'; \
-         BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u432-b06/OpenJDK8U-jdk_x64_linux_hotspot_8u432b06.tar.gz'; \
+         ESUM='191baa2e052627614022171400a917d28f0987dc54da48aaf07b06f552bb9884'; \
+         BINARY_URL='https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.25%2B9/OpenJDK11U-jdk_x64_linux_hotspot_11.0.25_9.tar.gz'; \
          ;; \
        arm64) \
-         ESUM='383caabc20428e9500f2e07965317ed4387a0e336104483e29a9e06eeffbf26b'; \
-         BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u432-b06/OpenJDK8U-jdk_aarch64_linux_hotspot_8u432b06.tar.gz'; \
+         ESUM='f2087cc3abdd509b74facf8e43e81e36244d14c70dec080b8f3a662695417ca7'; \
+         BINARY_URL='https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.25%2B9/OpenJDK11U-jdk_aarch64_linux_hotspot_11.0.25_9.tar.gz'; \
          ;; \
        armhf) \
-         ESUM='ff1ce3f6f1cf11987ab63f278b29cf1aae799652606c547f8a590e7acbd16b61'; \
-         BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u432-b06/OpenJDK8U-jdk_arm_linux_hotspot_8u432b06.tar.gz'; \
-         # Fixes libatomic.so.1: cannot open shared object file
-         apt-get update; \
-         DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libatomic1; \
-         rm -rf /var/lib/apt/lists/*; \
+         ESUM='6bdd7da08c9f8fedded8da0411b6566c16cb9a904d164b68a0b7f11c8376673a'; \
+         BINARY_URL='https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.25%2B9/OpenJDK11U-jdk_arm_linux_hotspot_11.0.25_9.tar.gz'; \
          ;; \
        ppc64el) \
-         ESUM='64fb17e83b79f9ad41dc18351a408bfe90324fd6360903ca5c0a740006c81be3'; \
-         BINARY_URL='https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u432-b06/OpenJDK8U-jdk_ppc64le_linux_hotspot_8u432b06.tar.gz'; \
+         ESUM='0014ffdae26d2b8f840b4842e3f9d4edc3576b4a961770708273d8ecc86ba5b6'; \
+         BINARY_URL='https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.25%2B9/OpenJDK11U-jdk_ppc64le_linux_hotspot_11.0.25_9.tar.gz'; \
+         ;; \
+       s390x) \
+         ESUM='5fb661da82943f42a14bed94beda6d4dd3188987bd13b77e8b6f907054a73e9d'; \
+         BINARY_URL='https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.25%2B9/OpenJDK11U-jdk_s390x_linux_hotspot_11.0.25_9.tar.gz'; \
          ;; \
        *) \
          echo "Unsupported arch: ${ARCH}"; \
@@ -81,21 +81,23 @@ RUN set -eux; \
         --strip-components 1 \
         --no-same-owner \
     ; \
-    rm -f /tmp/openjdk.tar.gz ${JAVA_HOME}/src.zip; \
+    rm -f /tmp/openjdk.tar.gz ${JAVA_HOME}/lib/src.zip; \
     # https://github.com/docker-library/openjdk/issues/331#issuecomment-498834472
     find "$JAVA_HOME/lib" -name '*.so' -exec dirname '{}' ';' | sort -u > /etc/ld.so.conf.d/docker-openjdk.conf; \
-    ldconfig;
+    ldconfig; \
+    # https://github.com/docker-library/openjdk/issues/212#issuecomment-420979840
+    # https://openjdk.java.net/jeps/341
+    java -Xshare:dump;
 
 RUN set -eux; \
     echo "Verifying install ..."; \
-    echo "javac -version"; javac -version; \
-    echo "java -version"; java -version; \
+    fileEncoding="$(echo 'System.out.println(System.getProperty("file.encoding"))' | jshell -s -)"; [ "$fileEncoding" = 'UTF-8' ]; rm -rf ~/.java; \
+    echo "javac --version"; javac --version; \
+    echo "java --version"; java --version; \
     echo "Complete."
 
 RUN apt-get update -y \
     && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6
-USER container
-ENV USER=container HOME=/home/container
 
 WORKDIR /home/container
 

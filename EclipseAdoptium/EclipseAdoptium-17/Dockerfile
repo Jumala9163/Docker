@@ -42,7 +42,7 @@ RUN set -eux; \
     locale-gen en_US.UTF-8; \
     rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_VERSION=jdk-17.0.13+11
+ENV JAVA_VERSION=jdk-17.0.15+6
 
 RUN set -eux; \
     ARCH="$(dpkg --print-architecture)"; \
