@@ -43,6 +43,9 @@ Pterodactylで使える各種イメージ
 ・[23](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/EclipseAdoptium-23)\
 `ghcr.io/jumala9163/yolks:eclipse-adoptium-23`
 
+・[24](https://github.com/Jumala9163/Docker/tree/main/EclipseAdoptium/EclipseAdoptium-24)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-24`
+
 ### AmazonCorretto
 
 ---
@@ -77,6 +80,9 @@ Pterodactylで使える各種イメージ
 ・[23](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto/Amazon-Corretto-23)\
 `ghcr.io/jumala9163/yolks:amazon-corretto-23`
 
+・[24](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto/Amazon-Corretto-24)\
+`ghcr.io/jumala9163/yolks:amazon-corretto-24`
+
 ### AmazonCorretto-JP
 
 ---
@@ -110,6 +116,9 @@ Pterodactylで使える各種イメージ
 
 ・[23](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-23_JP)\
 `ghcr.io/jumala9163/yolks:eclipse-adoptium-23_jp`
+
+・[24](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-24_JP)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-24_jp`
 
 ## JMusicBOT-JP
 
