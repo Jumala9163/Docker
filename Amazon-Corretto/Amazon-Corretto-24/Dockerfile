@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.licenses=MIT
 
 RUN useradd -d /home/container -m container
 
-ARG version=11.0.27.6-1
+ARG version=24.0.1.9-1
 
 RUN set -eux \
     && apt-get update \
@@ -17,12 +17,12 @@ RUN set -eux \
     && add-apt-repository 'deb https://apt.corretto.aws stable main' \
     && mkdir -p /usr/share/man/man1 || true \
     && apt-get update \
-    && apt-get install -y java-11-amazon-corretto-jdk=1:$version \
+    && apt-get install -y java-24-amazon-corretto-jdk=1:$version \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
         curl gnupg software-properties-common
 
-ENV LANG C.UTF-8
-ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto
+ENV LANG=C.UTF-8
+ENV JAVA_HOME=/usr/lib/jvm/java-24-amazon-corretto
 
 RUN apt-get update -y \
     && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6
