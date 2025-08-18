@@ -1,4 +1,4 @@
-FROM --platform=$TARGETOS/$TARGETARCH ubuntu:22.04
+FROM --platform=$TARGETOS/$TARGETARCH ubuntu:24.04
 
 LABEL author="Jumala9163" maintainer="Kome-Lab"
 
@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.licenses=MIT
 
 RUN useradd -d /home/container -m container
 
-ARG version=17.0.15.6-1
+ARG version=17.0.16.8-1
 
 RUN set -eux \
     && apt-get update \

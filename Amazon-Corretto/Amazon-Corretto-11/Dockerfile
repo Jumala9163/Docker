@@ -1,4 +1,4 @@
-FROM --platform=$TARGETOS/$TARGETARCH  debian:buster-slim
+FROM --platform=$TARGETOS/$TARGETARCH  debian:trixie-slim
 
 LABEL author="Jumala9163" maintainer="Kome-Lab"
 
@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.licenses=MIT
 
 RUN useradd -d /home/container -m container
 
-ARG version=11.0.27.6-1
+ARG version=11.0.28.6-1
 
 RUN set -eux \
     && apt-get update \
@@ -21,7 +21,7 @@ RUN set -eux \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
         curl gnupg software-properties-common
 
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto
 
 RUN apt-get update -y \
