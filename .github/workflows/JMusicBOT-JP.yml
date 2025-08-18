@@ -10,8 +10,6 @@ jobs:
   push:
     name: "yolks:jmusicbot-jp"
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
     steps:
       - uses: actions/checkout@v4
       - uses: docker/setup-qemu-action@v3
