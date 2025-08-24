@@ -1,4 +1,10 @@
+ARG TARGETOS
+ARG TARGETARCH
+
 FROM --platform=$TARGETOS/$TARGETARCH ubuntu:noble
+
+ARG TARGETOS
+ARG TARGETARCH
 
 LABEL author="Jumala9163" maintainer="Kome-Lab"
 LABEL org.opencontainers.image.source="https://github.com/Jumala9163/Docker"
