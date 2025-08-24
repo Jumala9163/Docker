@@ -1,4 +1,4 @@
-name: build Generic_Python
+name: build Generic_Python_EVA-Timer
 on:
   workflow_dispatch:
   push:

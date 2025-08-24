@@ -6,6 +6,8 @@ Pterodactylで使える各種イメージ
 - [AmazonCorretto](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto/)
 - [AmazonCorretto-JP](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/)
 - [JMusicBOT-JP](https://github.com/Jumala9163/Docker/tree/main/Discord/JMusicBOT-JP)
+- [Generic/Go](https://github.com/Jumala9163/Docker/tree/main/Generic/Go)
+- [Generic/Python_EVA-Timer](https://github.com/Jumala9163/Docker/tree/main/Generic/Python_EVA-Timer)
 
 ## イメージ一覧
 
@@ -120,7 +122,29 @@ Pterodactylで使える各種イメージ
 ・[24](https://github.com/Jumala9163/Docker/tree/main/Amazon-Corretto-JP/Amazon-Corretto-24_JP)\
 `ghcr.io/jumala9163/yolks:eclipse-adoptium-24_jp`
 
-## JMusicBOT-JP
+### JMusicBOT-JP
 
 ・[JMusicBOT-JP](https://github.com/Jumala9163/Docker/tree/main/Discord/JMusicBOT-JP)\
 `ghcr.io/jumala9163/yolks:jmusicbot-jp`
+
+### Generic/Go
+
+・[Go-1.21](https://github.com/Jumala9163/Docker/tree/main/Generic/Go/Go-1.21)\
+`ghcr.io/jumala9163/yolks:go-1.21`
+
+・[Go-1.22](https://github.com/Jumala9163/Docker/tree/main/Generic/Go/Go-1.22)\
+`ghcr.io/jumala9163/yolks:go-1.22`
+
+・[Go-1.23](https://github.com/Jumala9163/Docker/tree/main/Generic/Go/Go-1.23)\
+`ghcr.io/jumala9163/yolks:go-1.23`
+
+・[Go-1.24](https://github.com/Jumala9163/Docker/tree/main/Generic/Go/Go-1.24)\
+`ghcr.io/jumala9163/yolks:go-1.24`
+
+・[Go-1.25](https://github.com/Jumala9163/Docker/tree/main/Generic/Go/Go-1.25)\
+`ghcr.io/jumala9163/yolks:go-1.25`
+
+### Generic/Python_EVA-Timer
+
+・[Generic/Python_EVA-Timer](https://github.com/Jumala9163/Docker/tree/main/Generic/Python_EVA-Timer)\
+`ghcr.io/jumala9163/yolks:py-eva-timer`
