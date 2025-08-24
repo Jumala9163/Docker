@@ -5,10 +5,6 @@ LABEL author="Jumala9163" maintainer="Kome-Lab"
 LABEL org.opencontainers.image.source="https://github.com/Jumala9163/Docker"
 LABEL org.opencontainers.image.licenses=MIT
 
-ARG DEBIAN_FRONTEND=noninteractive
-
-ARG GO_VERSION=1.23.12
-
 RUN useradd -d /home/container -m container
 
 ENV USER=container \
@@ -16,8 +12,8 @@ ENV USER=container \
     TERM=xterm
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
-ENV GOPATH=${HOME}/go
-ENV PATH=/usr/local/go/bin:${GOPATH}/bin:${PATH}
+ARG DEBIAN_FRONTEND=noninteractive
+ARG GO_VERSION=1.23.12
 
 RUN set -eux; \
     arch="$(dpkg --print-architecture)"; \
@@ -33,6 +29,9 @@ RUN set -eux; \
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates curl git tzdata bash-completion build-essential pkg-config \
 && rm -rf /var/lib/apt/lists/*
+
+ENV GOPATH=${HOME}/go
+ENV PATH=/usr/local/go/bin:${GOPATH}/bin:${PATH}
 
 WORKDIR /home/container
 
