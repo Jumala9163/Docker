@@ -5,12 +5,12 @@ on:
     branches:
       - main
     paths:
-      - 'Generic/Go-1.20/**'
-      - 'Generic/Go-1.21/**'
-      - 'Generic/Go-1.22/**'
-      - 'Generic/Go-1.23/**'
-      - 'Generic/Go-1.24/**'
-      - 'Generic/Go-1.25/**'
+      - 'Generic/Go/Go-1.20/**'
+      - 'Generic/Go/Go-1.21/**'
+      - 'Generic/Go/Go-1.22/**'
+      - 'Generic/Go/Go-1.23/**'
+      - 'Generic/Go/Go-1.24/**'
+      - 'Generic/Go/Go-1.25/**'
 jobs:
   push:
     name: "yolks:go-${{ matrix.tag }}"
@@ -38,8 +38,8 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: ./Generic/Go-${{ matrix.tag }}
-          file: ./Generic/Go-${{ matrix.tag }}/Dockerfile
+          context: ./Generic/Go/Go-${{ matrix.tag }}
+          file: ./Generic/Go/Go-${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
