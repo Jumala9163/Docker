@@ -1,15 +1,30 @@
-name: build Generic
+name: build Generic_Go
 on:
   workflow_dispatch:
   push:
     branches:
       - main
     paths:
-      - 'Generic/Python_EVA-Timer/**'
+      - 'Generic/Go-1.20/**'
+      - 'Generic/Go-1.21/**'
+      - 'Generic/Go-1.22/**'
+      - 'Generic/Go-1.23/**'
+      - 'Generic/Go-1.24/**'
+      - 'Generic/Go-1.25/**'
 jobs:
   push:
-    name: "yolks:py-eva-timer"
+    name: "yolks:go-${{ matrix.tag }}"
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tag:
+          - '1.20'
+          - '1.21'
+          - '1.22'
+          - '1.23'
+          - '1.24'
+          - '1.25'
     steps:
       - uses: actions/checkout@v4
       - uses: docker/setup-qemu-action@v3
@@ -23,9 +38,9 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: ./Generic/Python_EVA-Timer
-          file: ./Generic/Python_EVA-Timer/Dockerfile
+          context: ./Generic/Go-${{ matrix.tag }}
+          file: ./Generic/Go-${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/jumala9163/yolks:py-eva-timer
+            ghcr.io/jumala9163/yolks:go-${{ matrix.tag }}
