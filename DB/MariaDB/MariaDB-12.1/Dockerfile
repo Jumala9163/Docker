@@ -12,7 +12,7 @@ ENV         TZ=Asia/Tokyo
 RUN         ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN         apt update -y \
-            && apt install -y netcat tzdata \
+            && apt install -y netcat-openbsd tzdata \
             && useradd -d /home/container -m container -s /bin/bash
 
 USER        container
