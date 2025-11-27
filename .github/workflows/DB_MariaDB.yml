@@ -1,15 +1,28 @@
-name: build Generic_Python_EVA-Timer
+name: build MariaDB
 on:
   workflow_dispatch:
   push:
     branches:
       - main
     paths:
-      - 'Generic/Python_EVA-Timer/**'
+      - 'DB/MariaDB-10.6/**'
+      - 'DB/MariaDB-10.11/**'
+      - 'DB/MariaDB-11.4/**'
+      - 'DB/MariaDB-11.8/**'
+      - 'DB/MariaDB-12.1/**'
 jobs:
   push:
-    name: "yolks:py-eva-timer"
+    name: "yolks:mariadb-${{ matrix.tag }}"
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tag:
+          - '10.6'
+          - '10.11'
+          - '11.4'
+          - '11.8'
+          - '12.1'
     steps:
       - uses: actions/checkout@v4
       - uses: docker/setup-qemu-action@v3
@@ -23,9 +36,9 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: ./Generic/Python_EVA-Timer
-          file: ./Generic/Python_EVA-Timer/Dockerfile
+          context: ./DB/MariaDB-${{ matrix.tag }}
+          file: ./DB/MariaDB-${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/jumala9163/yolks:py-eva-timer
+            ghcr.io/jumala9163/yolks:mariadb-${{ matrix.tag }}

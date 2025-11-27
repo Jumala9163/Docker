@@ -5,17 +5,17 @@ on:
     branches:
       - main
     paths:
-      - 'Amazon-Corretto-JP/Amazon-Corretto-8_JP/**'
-      - 'Amazon-Corretto-JP/Amazon-Corretto-11_JP/**'
-      - 'Amazon-Corretto-JP/Amazon-Corretto-16_JP/**'
-      - 'Amazon-Corretto-JP/Amazon-Corretto-17_JP/**'
-      - 'Amazon-Corretto-JP/Amazon-Corretto-18_JP/**'
-      - 'Amazon-Corretto-JP/Amazon-Corretto-19_JP/**'
-      - 'Amazon-Corretto-JP/Amazon-Corretto-20_JP/**'
-      - 'Amazon-Corretto-JP/Amazon-Corretto-21_JP/**'
-      - 'Amazon-Corretto-JP/Amazon-Corretto-22_JP/**'
-      - 'Amazon-Corretto-JP/Amazon-Corretto-23_JP/**'
-      - 'Amazon-Corretto-JP/Amazon-Corretto-24_JP/**'
+      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-8_JP/**'
+      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-11_JP/**'
+      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-16_JP/**'
+      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-17_JP/**'
+      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-18_JP/**'
+      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-19_JP/**'
+      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-20_JP/**'
+      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-21_JP/**'
+      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-22_JP/**'
+      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-23_JP/**'
+      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-24_JP/**'
 jobs:
   push:
     name: "yolks:amazon-corretto-${{ matrix.tag }}_jp"
@@ -48,8 +48,8 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: ./Amazon-Corretto-JP/Amazon-Corretto-${{ matrix.tag }}_JP
-          file: ./Amazon-Corretto-JP/Amazon-Corretto-${{ matrix.tag }}_JP/Dockerfile
+          context: ./Java/Amazon-Corretto-JP/Amazon-Corretto-${{ matrix.tag }}_JP
+          file: ./Java/Amazon-Corretto-JP/Amazon-Corretto-${{ matrix.tag }}_JP/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |

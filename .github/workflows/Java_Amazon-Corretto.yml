@@ -5,17 +5,17 @@ on:
     branches:
       - main
     paths:
-      - 'Amazon-Corretto/Amazon-Corretto-8/**'
-      - 'Amazon-Corretto/Amazon-Corretto-11/**'
-      - 'Amazon-Corretto/Amazon-Corretto-16/**'
-      - 'Amazon-Corretto/Amazon-Corretto-17/**'
-      - 'Amazon-Corretto/Amazon-Corretto-18/**'
-      - 'Amazon-Corretto/Amazon-Corretto-19/**'
-      - 'Amazon-Corretto/Amazon-Corretto-20/**'
-      - 'Amazon-Corretto/Amazon-Corretto-21/**'
-      - 'Amazon-Corretto/Amazon-Corretto-22/**'
-      - 'Amazon-Corretto/Amazon-Corretto-23/**'
-      - 'Amazon-Corretto/Amazon-Corretto-24/**'
+      - 'Java/Amazon-Corretto/Amazon-Corretto-8/**'
+      - 'Java/Amazon-Corretto/Amazon-Corretto-11/**'
+      - 'Java/Amazon-Corretto/Amazon-Corretto-16/**'
+      - 'Java/Amazon-Corretto/Amazon-Corretto-17/**'
+      - 'Java/Amazon-Corretto/Amazon-Corretto-18/**'
+      - 'Java/Amazon-Corretto/Amazon-Corretto-19/**'
+      - 'Java/Amazon-Corretto/Amazon-Corretto-20/**'
+      - 'Java/Amazon-Corretto/Amazon-Corretto-21/**'
+      - 'Java/Amazon-Corretto/Amazon-Corretto-22/**'
+      - 'Java/Amazon-Corretto/Amazon-Corretto-23/**'
+      - 'Java/Amazon-Corretto/Amazon-Corretto-24/**'
 jobs:
   push:
     name: "yolks:amazon-corretto-${{ matrix.tag }}"
@@ -48,8 +48,8 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: ./Amazon-Corretto/Amazon-Corretto-${{ matrix.tag }}
-          file: ./Amazon-Corretto/Amazon-Corretto-${{ matrix.tag }}/Dockerfile
+          context: ./Java/Amazon-Corretto/Amazon-Corretto-${{ matrix.tag }}
+          file: ./Java/Amazon-Corretto/Amazon-Corretto-${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |

@@ -1,15 +1,30 @@
-name: build JMusicBOT-JP
+name: build Go
 on:
   workflow_dispatch:
   push:
     branches:
       - main
     paths:
-      - 'Discord/JMusicBOT-JP/**'
+      - 'Go/Go-1.20/**'
+      - 'Go/Go-1.21/**'
+      - 'Go/Go-1.22/**'
+      - 'Go/Go-1.23/**'
+      - 'Go/Go-1.24/**'
+      - 'Go/Go-1.25/**'
 jobs:
   push:
-    name: "yolks:jmusicbot-jp"
+    name: "yolks:go-${{ matrix.tag }}"
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tag:
+          - '1.20'
+          - '1.21'
+          - '1.22'
+          - '1.23'
+          - '1.24'
+          - '1.25'
     steps:
       - uses: actions/checkout@v4
       - uses: docker/setup-qemu-action@v3
@@ -23,9 +38,9 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: ./Discord/JMusicBOT-JP
-          file: ./Discord/JMusicBOT-JP/Dockerfile
+          context: ./Go/Go-${{ matrix.tag }}
+          file: ./Go/Go-${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/jumala9163/yolks:jmusicbot-jp
+            ghcr.io/jumala9163/yolks:go-${{ matrix.tag }}

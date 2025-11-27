@@ -5,17 +5,17 @@ on:
     branches:
       - main
     paths:
-      - 'EclipseAdoptium/EclipseAdoptium-8/**'
-      - 'EclipseAdoptium/EclipseAdoptium-11/**'
-      - 'EclipseAdoptium/EclipseAdoptium-16/**'
-      - 'EclipseAdoptium/EclipseAdoptium-17/**'
-      - 'EclipseAdoptium/EclipseAdoptium-18/**'
-      - 'EclipseAdoptium/EclipseAdoptium-19/**'
-      - 'EclipseAdoptium/EclipseAdoptium-20/**'
-      - 'EclipseAdoptium/EclipseAdoptium-21/**'
-      - 'EclipseAdoptium/EclipseAdoptium-22/**'
-      - 'EclipseAdoptium/EclipseAdoptium-23/**'
-      - 'EclipseAdoptium/EclipseAdoptium-24/**'
+      - 'Java/EclipseAdoptium/EclipseAdoptium-8/**'
+      - 'Java/EclipseAdoptium/EclipseAdoptium-11/**'
+      - 'Java/EclipseAdoptium/EclipseAdoptium-16/**'
+      - 'Java/EclipseAdoptium/EclipseAdoptium-17/**'
+      - 'Java/EclipseAdoptium/EclipseAdoptium-18/**'
+      - 'Java/EclipseAdoptium/EclipseAdoptium-19/**'
+      - 'Java/EclipseAdoptium/EclipseAdoptium-20/**'
+      - 'Java/EclipseAdoptium/EclipseAdoptium-21/**'
+      - 'Java/EclipseAdoptium/EclipseAdoptium-22/**'
+      - 'Java/EclipseAdoptium/EclipseAdoptium-23/**'
+      - 'Java/EclipseAdoptium/EclipseAdoptium-24/**'
 jobs:
   push:
     name: "yolks:eclipse-adoptium-${{ matrix.tag }}"
@@ -48,8 +48,8 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: ./EclipseAdoptium/EclipseAdoptium-${{ matrix.tag }}
-          file: ./EclipseAdoptium/EclipseAdoptium-${{ matrix.tag }}/Dockerfile
+          context: ./Java/EclipseAdoptium/EclipseAdoptium-${{ matrix.tag }}
+          file: ./Java/EclipseAdoptium/EclipseAdoptium-${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
