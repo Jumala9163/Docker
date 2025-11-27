@@ -5,11 +5,11 @@ on:
     branches:
       - main
     paths:
-      - 'DB/MariaDB-10.6/**'
-      - 'DB/MariaDB-10.11/**'
-      - 'DB/MariaDB-11.4/**'
-      - 'DB/MariaDB-11.8/**'
-      - 'DB/MariaDB-12.1/**'
+      - 'DB/MariaDB/MariaDB-10.6/**'
+      - 'DB/MariaDB/MariaDB-10.11/**'
+      - 'DB/MariaDB/MariaDB-11.4/**'
+      - 'DB/MariaDB/MariaDB-11.8/**'
+      - 'DB/MariaDB/MariaDB-12.1/**'
 jobs:
   push:
     name: "yolks:mariadb-${{ matrix.tag }}"
@@ -36,8 +36,8 @@ jobs:
           password: ${{ secrets.GITHUBTOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: ./DB/MariaDB-${{ matrix.tag }}
-          file: ./DB/MariaDB-${{ matrix.tag }}/Dockerfile
+          context: ./DB/MariaDB/MariaDB-${{ matrix.tag }}
+          file: ./DB/MariaDB/MariaDB-${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
