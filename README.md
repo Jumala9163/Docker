@@ -14,7 +14,7 @@ Pterodactylで使える各種イメージ
 
 ### Apps/Discord/JMusicBOT-JP
 
-・[JMusicBOT-JP](https://github.com/Jumala9163/Docker/tree/main/Apps/Discord/JMusicBOT-JP)\
+・[Apps/Discord/JMusicBOT-JP](https://github.com/Jumala9163/Docker/tree/main/Apps/Discord/JMusicBOT-JP)\
 `ghcr.io/jumala9163/yolks:jmusicbot-jp`
 
 ### Apps/Python/EVA-Timer
@@ -27,16 +27,16 @@ Pterodactylで使える各種イメージ
 ・[MariaDB-10.6](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-10.6)\
 `ghcr.io/jumala9163/yolks:mariadb-10.6`
 
-・[MariaDB-10.6](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-10.11)\
+・[MariaDB-10.11](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-10.11)\
 `ghcr.io/jumala9163/yolks:mariadb-10.11`
 
-・[MariaDB-10.6](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-11.4)\
+・[MariaDB-11.4](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-11.4)\
 `ghcr.io/jumala9163/yolks:mariadb-11.4`
 
-・[MariaDB-10.6](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-11.8)\
+・[MariaDB-11.8](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-11.8)\
 `ghcr.io/jumala9163/yolks:mariadb-11.8`
 
-・[MariaDB-10.6](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-12.1)\
+・[MariaDB-12.1](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-12.1)\
 `ghcr.io/jumala9163/yolks:mariadb-12.1`
 
 ### Go
@@ -93,6 +93,9 @@ Pterodactylで使える各種イメージ
 ・[24](https://github.com/Jumala9163/Docker/tree/main/Java/Amazon-Corretto/Amazon-Corretto-24)\
 `ghcr.io/jumala9163/yolks:amazon-corretto-24`
 
+・[25](https://github.com/Jumala9163/Docker/tree/main/Java/Amazon-Corretto/Amazon-Corretto-25)\
+`ghcr.io/jumala9163/yolks:amazon-corretto-25`
+
 ### Java/AmazonCorretto-JP
 
 ---
@@ -130,6 +133,9 @@ Pterodactylで使える各種イメージ
 ・[24](https://github.com/Jumala9163/Docker/tree/main/Java/Amazon-Corretto-JP/Amazon-Corretto-24_JP)\
 `ghcr.io/jumala9163/yolks:amazon-corretto-24_jp`
 
+・[25](https://github.com/Jumala9163/Docker/tree/main/Java/Amazon-Corretto-JP/Amazon-Corretto-25_JP)\
+`ghcr.io/jumala9163/yolks:amazon-corretto-25_jp`
+
 ### Java/EclipseAdoptium
 
 ---
@@ -166,3 +172,6 @@ Pterodactylで使える各種イメージ
 
 ・[24](https://github.com/Jumala9163/Docker/tree/main/Java/EclipseAdoptium/EclipseAdoptium-24)\
 `ghcr.io/jumala9163/yolks:eclipse-adoptium-24`
+
+・[25](https://github.com/Jumala9163/Docker/tree/main/Java/EclipseAdoptium/EclipseAdoptium-25)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-25`
