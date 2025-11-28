@@ -20,7 +20,7 @@ ENV USER=container \
     LC_ALL=en_US.UTF-8
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG GO_VERSION=1.25.0
+ARG GO_VERSION=1.25.4
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates curl git tzdata bash-completion build-essential pkg-config \
