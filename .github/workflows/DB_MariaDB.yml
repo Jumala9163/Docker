@@ -6,6 +6,10 @@ on:
       - main
     paths:
       - 'DB/MariaDB/MariaDB-10.6/**'
+      - 'DB/MariaDB/MariaDB-10.7/**'
+      - 'DB/MariaDB/MariaDB-10.8/**'
+      - 'DB/MariaDB/MariaDB-10.9/**'
+      - 'DB/MariaDB/MariaDB-10.10/**'
       - 'DB/MariaDB/MariaDB-10.11/**'
       - 'DB/MariaDB/MariaDB-11.4/**'
       - 'DB/MariaDB/MariaDB-11.8/**'
@@ -19,6 +23,10 @@ jobs:
       matrix:
         tag:
           - '10.6'
+          - '10.7'
+          - '10.8'
+          - '10.9'
+          - '10.10'
           - '10.11'
           - '11.4'
           - '11.8'
