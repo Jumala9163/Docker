@@ -2,7 +2,7 @@
 
 [client]
 port		= 3306
-socket		= /mnt/server/run/mysqld/mysqld.sock
+socket		= /mnt/server/run/mariadbd/mariadbd.sock
 
 [mysqld]
 pid-file	= /mnt/server/run/mariadbd/mariadbd.pid
