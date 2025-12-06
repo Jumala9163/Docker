@@ -1,6 +1,4 @@
 # MariaDB install database server configuration file.
-!include /etc/mysql/mariadb.cnf
-!includedir /etc/mysql/conf.d/
 
 [client]
 port		= 3306
