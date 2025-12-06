@@ -18,6 +18,7 @@
 [client]
 port		= 3306
 socket		= /mnt/server/run/mysqld/mysqld.sock
+default-character-set    = utf8mb4
 
 # Here is entries for some specific programs
 # The following values assume you have at least 32M ram
@@ -40,7 +41,11 @@ datadir		= /mnt/server/mysql
 tmpdir		= /tmp
 lc_messages_dir	= /usr/share/mysql
 lc_messages	= en_US
+character-set-server     = utf8mb4
+collation-server         = utf8mb4_general_ci
+skip-character-set-client-handshake
 skip-external-locking
+
 #
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
@@ -56,6 +61,7 @@ sort_buffer_size	= 4M
 bulk_insert_buffer_size	= 16M
 tmp_table_size		= 32M
 max_heap_table_size	= 32M
+
 #
 # * MyISAM
 #
@@ -69,6 +75,7 @@ myisam_sort_buffer_size	= 512M
 concurrent_insert	= 2
 read_buffer_size	= 2M
 read_rnd_buffer_size	= 1M
+
 #
 # * Query Cache Configuration
 #
@@ -77,6 +84,7 @@ query_cache_limit		= 128K
 query_cache_size		= 64M
 # for more write intensive setups, set to DEMAND or OFF
 #query_cache_type		= DEMAND
+
 #
 # * Logging and Replication
 #
@@ -124,6 +132,7 @@ max_binlog_size         = 100M
 # If applications support it, this stricter sql_mode prevents some
 # mistakes like inserting invalid dates etc.
 #sql_mode		= NO_ENGINE_SUBSTITUTION,TRADITIONAL
+
 #
 # * InnoDB
 #
@@ -138,6 +147,7 @@ innodb_file_per_table	= 1
 innodb_open_files	= 400
 innodb_io_capacity	= 400
 innodb_flush_method	= O_DIRECT
+
 #
 # * Security Features
 #
@@ -174,8 +184,10 @@ bind-address=0.0.0.0
 quick
 quote-names
 max_allowed_packet	= 16M
+default-character-set    = utf8mb4
 
 [mysql]
+default-character-set    = utf8mb4
 #no-auto-rehash	# faster start of mysql but no tab completion
 
 [isamchk]

@@ -3,6 +3,7 @@
 [client]
 port		= 3306
 socket		= /mnt/server/run/mariadbd/mariadbd.sock
+default-character-set    = utf8mb4
 
 [mysqld]
 pid-file	= /mnt/server/run/mariadbd/mariadbd.pid
@@ -13,6 +14,9 @@ datadir		= /mnt/server/mariadb
 tmpdir		= /tmp
 lc_messages_dir	= /usr/share/mysql
 lc_messages	= en_US
+character-set-server     = utf8mb4
+collation-server         = utf8mb4_general_ci
+skip-character-set-client-handshake
 skip-external-locking
 
 #
@@ -73,8 +77,10 @@ max_binlog_size         = 100M
 quick
 quote-names
 max_allowed_packet	    = 16M
+default-character-set    = utf8mb4
 
 [mysql]
+default-character-set    = utf8mb4
 #no-auto-rehash	# faster start of mariadb but no tab completion
 
 [isamchk]
