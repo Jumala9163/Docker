@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.licenses=MIT
 
 RUN useradd -d /home/container -m container
 
-ARG version=21.0.9.11-1
+ARG version=21.0.10.7-1
 
 RUN set -ux \
     && apt-get update \
