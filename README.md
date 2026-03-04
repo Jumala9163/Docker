@@ -2,6 +2,7 @@
 
 Pterodactylで使える各種イメージ
 
+- [Apps/Discord/I-TTS](https://github.com/Jumala9163/Docker/tree/main/Apps/Discord/I-TTS)
 - [Apps/Discord/JMusicBOT-JP](https://github.com/Jumala9163/Docker/tree/main/Apps/Discord/JMusicBOT-JP)
 - [Apps/Python/EVA-Timer](https://github.com/Jumala9163/Docker/tree/main/Apps/Python/EVA-Timer)
 - [DB/MariaDB](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB)
@@ -11,6 +12,11 @@ Pterodactylで使える各種イメージ
 - [Java/EclipseAdoptium](https://github.com/Jumala9163/Docker/tree/main/Java/EclipseAdoptium/)
 
 ## イメージ一覧
+
+### Apps/Discord/I-TTS
+
+・[Apps/Discord/I-TTS](https://github.com/Jumala9163/Docker/tree/main/Apps/Discord/I-TTS)\
+`ghcr.io/jumala9163/yolks:i-tts`
 
 ### Apps/Discord/JMusicBOT-JP
 
@@ -36,8 +42,8 @@ Pterodactylで使える各種イメージ
 ・[MariaDB-11.8](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-11.8)\
 `ghcr.io/jumala9163/yolks:mariadb-11.8`
 
-・[MariaDB-12.1](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-12.1)\
-`ghcr.io/jumala9163/yolks:mariadb-12.1`
+・[MariaDB-12.2](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-12.2)\
+`ghcr.io/jumala9163/yolks:mariadb-12.2`
 
 ### Go
 
@@ -55,6 +61,9 @@ Pterodactylで使える各種イメージ
 
 ・[Go-1.25](https://github.com/Jumala9163/Docker/tree/main/Go/Go-1.25)\
 `ghcr.io/jumala9163/yolks:go-1.25`
+
+・[Go-1.26](https://github.com/Jumala9163/Docker/tree/main/Go/Go-1.26)\
+`ghcr.io/jumala9163/yolks:go-1.26`
 
 ### Java/AmazonCorretto
 
