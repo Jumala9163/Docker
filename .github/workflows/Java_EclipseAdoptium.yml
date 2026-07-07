@@ -17,6 +17,7 @@ on:
       - 'Java/EclipseAdoptium/EclipseAdoptium-23/**'
       - 'Java/EclipseAdoptium/EclipseAdoptium-24/**'
       - 'Java/EclipseAdoptium/EclipseAdoptium-25/**'
+      - 'Java/EclipseAdoptium/EclipseAdoptium-26/**'
 jobs:
   push:
     name: "yolks:eclipse-adoptium-${{ matrix.tag }}"
@@ -37,6 +38,7 @@ jobs:
           - '23'
           - '24'
           - '25'
+          - '26'
     steps:
       - uses: actions/checkout@v6
       - uses: docker/setup-qemu-action@v4
