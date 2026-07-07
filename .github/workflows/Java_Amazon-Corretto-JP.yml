@@ -17,6 +17,7 @@ on:
       - 'Java/Amazon-Corretto-JP/Amazon-Corretto-23_JP/**'
       - 'Java/Amazon-Corretto-JP/Amazon-Corretto-24_JP/**'
       - 'Java/Amazon-Corretto-JP/Amazon-Corretto-25_JP/**'
+      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-26_JP/**'
 jobs:
   push:
     name: "yolks:amazon-corretto-${{ matrix.tag }}_jp"
@@ -37,6 +38,7 @@ jobs:
           - '23'
           - '24'
           - '25'
+          - '26'
     steps:
       - uses: actions/checkout@v6
       - uses: docker/setup-qemu-action@v4
