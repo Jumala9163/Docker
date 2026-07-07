@@ -42,8 +42,8 @@ Pterodactylで使える各種イメージ
 ・[MariaDB-11.8](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-11.8)\
 `ghcr.io/jumala9163/yolks:mariadb-11.8`
 
-・[MariaDB-12.2](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-12.2)\
-`ghcr.io/jumala9163/yolks:mariadb-12.2`
+・[MariaDB-12.3](https://github.com/Jumala9163/Docker/tree/main/DB/MariaDB/MariaDB-12.3)\
+`ghcr.io/jumala9163/yolks:mariadb-12.3`
 
 ### Go
 
@@ -105,6 +105,9 @@ Pterodactylで使える各種イメージ
 ・[25](https://github.com/Jumala9163/Docker/tree/main/Java/Amazon-Corretto/Amazon-Corretto-25)\
 `ghcr.io/jumala9163/yolks:amazon-corretto-25`
 
+・[26](https://github.com/Jumala9163/Docker/tree/main/Java/Amazon-Corretto/Amazon-Corretto-26)\
+`ghcr.io/jumala9163/yolks:amazon-corretto-26`
+
 ### Java/AmazonCorretto-JP
 
 ---
@@ -145,6 +148,9 @@ Pterodactylで使える各種イメージ
 ・[25](https://github.com/Jumala9163/Docker/tree/main/Java/Amazon-Corretto-JP/Amazon-Corretto-25_JP)\
 `ghcr.io/jumala9163/yolks:amazon-corretto-25_jp`
 
+・[26](https://github.com/Jumala9163/Docker/tree/main/Java/Amazon-Corretto-JP/Amazon-Corretto-26_JP)\
+`ghcr.io/jumala9163/yolks:amazon-corretto-26_jp`
+
 ### Java/EclipseAdoptium
 
 ---
@@ -184,3 +190,7 @@ Pterodactylで使える各種イメージ
 
 ・[25](https://github.com/Jumala9163/Docker/tree/main/Java/EclipseAdoptium/EclipseAdoptium-25)\
 `ghcr.io/jumala9163/yolks:eclipse-adoptium-25`
+
+・[26](https://github.com/Jumala9163/Docker/tree/main/Java/EclipseAdoptium/EclipseAdoptium-26)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-26`
+w
