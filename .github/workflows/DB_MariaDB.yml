@@ -9,7 +9,7 @@ on:
       - 'DB/MariaDB/MariaDB-10.11/**'
       - 'DB/MariaDB/MariaDB-11.4/**'
       - 'DB/MariaDB/MariaDB-11.8/**'
-      - 'DB/MariaDB/MariaDB-12.2/**'
+      - 'DB/MariaDB/MariaDB-12.3/**'
 jobs:
   push:
     name: "yolks:mariadb-${{ matrix.tag }}"
@@ -22,7 +22,7 @@ jobs:
           - '10.11'
           - '11.4'
           - '11.8'
-          - '12.2'
+          - '12.3'
     steps:
       - uses: actions/checkout@v6
       - uses: docker/setup-qemu-action@v4
