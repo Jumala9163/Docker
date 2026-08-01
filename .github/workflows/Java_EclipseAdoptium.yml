@@ -7,15 +7,8 @@ on:
     paths:
       - 'Java/EclipseAdoptium/EclipseAdoptium-8/**'
       - 'Java/EclipseAdoptium/EclipseAdoptium-11/**'
-      - 'Java/EclipseAdoptium/EclipseAdoptium-16/**'
       - 'Java/EclipseAdoptium/EclipseAdoptium-17/**'
-      - 'Java/EclipseAdoptium/EclipseAdoptium-18/**'
-      - 'Java/EclipseAdoptium/EclipseAdoptium-19/**'
-      - 'Java/EclipseAdoptium/EclipseAdoptium-20/**'
       - 'Java/EclipseAdoptium/EclipseAdoptium-21/**'
-      - 'Java/EclipseAdoptium/EclipseAdoptium-22/**'
-      - 'Java/EclipseAdoptium/EclipseAdoptium-23/**'
-      - 'Java/EclipseAdoptium/EclipseAdoptium-24/**'
       - 'Java/EclipseAdoptium/EclipseAdoptium-25/**'
       - 'Java/EclipseAdoptium/EclipseAdoptium-26/**'
 jobs:
@@ -28,15 +21,8 @@ jobs:
         tag:
           - '8'
           - '11'
-          - '16'
           - '17'
-          - '18'
-          - '19'
-          - '20'
           - '21'
-          - '22'
-          - '23'
-          - '24'
           - '25'
           - '26'
     steps:
