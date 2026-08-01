@@ -7,15 +7,8 @@ on:
     paths:
       - 'Java/Amazon-Corretto/Amazon-Corretto-8/**'
       - 'Java/Amazon-Corretto/Amazon-Corretto-11/**'
-      - 'Java/Amazon-Corretto/Amazon-Corretto-16/**'
       - 'Java/Amazon-Corretto/Amazon-Corretto-17/**'
-      - 'Java/Amazon-Corretto/Amazon-Corretto-18/**'
-      - 'Java/Amazon-Corretto/Amazon-Corretto-19/**'
-      - 'Java/Amazon-Corretto/Amazon-Corretto-20/**'
       - 'Java/Amazon-Corretto/Amazon-Corretto-21/**'
-      - 'Java/Amazon-Corretto/Amazon-Corretto-22/**'
-      - 'Java/Amazon-Corretto/Amazon-Corretto-23/**'
-      - 'Java/Amazon-Corretto/Amazon-Corretto-24/**'
       - 'Java/Amazon-Corretto/Amazon-Corretto-25/**'
       - 'Java/Amazon-Corretto/Amazon-Corretto-26/**'
 jobs:
@@ -28,15 +21,8 @@ jobs:
         tag:
           - '8'
           - '11'
-          - '16'
           - '17'
-          - '18'
-          - '19'
-          - '20'
           - '21'
-          - '22'
-          - '23'
-          - '24'
           - '25'
           - '26'
     steps:
