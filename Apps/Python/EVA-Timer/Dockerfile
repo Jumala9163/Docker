@@ -1,4 +1,4 @@
-FROM        --platform=$TARGETOS/$TARGETARCH python:3.14.6-slim-trixie
+FROM        --platform=$TARGETOS/$TARGETARCH python:3.15.1-slim-trixie
 
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 LABEL       author="Jumala9163" maintainer="Kome-Lab"
