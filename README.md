@@ -47,6 +47,9 @@ Pterodactylで使える各種イメージ
 
 ### Go
 
+・[Go-1.20](https://github.com/Jumala9163/Docker/tree/main/Go/Go-1.20)\
+`ghcr.io/jumala9163/yolks:go-1.20`
+
 ・[Go-1.21](https://github.com/Jumala9163/Docker/tree/main/Go/Go-1.21)\
 `ghcr.io/jumala9163/yolks:go-1.21`
 
@@ -64,6 +67,9 @@ Pterodactylで使える各種イメージ
 
 ・[Go-1.26](https://github.com/Jumala9163/Docker/tree/main/Go/Go-1.26)\
 `ghcr.io/jumala9163/yolks:go-1.26`
+
+・[Go-1.27](https://github.com/Jumala9163/Docker/tree/main/Go/Go-1.27)\
+`ghcr.io/jumala9163/yolks:go-1.27`
 
 ### Java/AmazonCorretto
 
@@ -108,6 +114,9 @@ Pterodactylで使える各種イメージ
 ・[26](https://github.com/Jumala9163/Docker/tree/main/Java/Amazon-Corretto/Amazon-Corretto-26)\
 `ghcr.io/jumala9163/yolks:amazon-corretto-26`
 
+・[27](https://github.com/Jumala9163/Docker/tree/main/Java/Amazon-Corretto/Amazon-Corretto-27)\
+`ghcr.io/jumala9163/yolks:amazon-corretto-27`
+
 ### Java/AmazonCorretto-JP
 
 ---
@@ -151,6 +160,9 @@ Pterodactylで使える各種イメージ
 ・[26](https://github.com/Jumala9163/Docker/tree/main/Java/Amazon-Corretto-JP/Amazon-Corretto-26_JP)\
 `ghcr.io/jumala9163/yolks:amazon-corretto-26_jp`
 
+・[27](https://github.com/Jumala9163/Docker/tree/main/Java/Amazon-Corretto-JP/Amazon-Corretto-27_JP)\
+`ghcr.io/jumala9163/yolks:amazon-corretto-27_jp`
+
 ### Java/EclipseAdoptium
 
 ---
@@ -193,4 +205,6 @@ Pterodactylで使える各種イメージ
 
 ・[26](https://github.com/Jumala9163/Docker/tree/main/Java/EclipseAdoptium/EclipseAdoptium-26)\
 `ghcr.io/jumala9163/yolks:eclipse-adoptium-26`
-w
+
+・[27](https://github.com/Jumala9163/Docker/tree/main/Java/EclipseAdoptium/EclipseAdoptium-27)\
+`ghcr.io/jumala9163/yolks:eclipse-adoptium-27`
