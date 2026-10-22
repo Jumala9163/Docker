@@ -7,6 +7,7 @@ on:
     paths:
       - 'Go/Go-1.25/**'
       - 'Go/Go-1.26/**'
+      - 'Go/Go-1.27/**'
 jobs:
   push:
     name: "yolks:go-${{ matrix.tag }}"
@@ -17,6 +18,7 @@ jobs:
         tag:
           - '1.25'
           - '1.26'
+          - '1.27'
     steps:
       - uses: actions/checkout@v6
       - uses: docker/setup-qemu-action@v4
