@@ -10,7 +10,6 @@ on:
       - 'Java/Amazon-Corretto-JP/Amazon-Corretto-17_JP/**'
       - 'Java/Amazon-Corretto-JP/Amazon-Corretto-21_JP/**'
       - 'Java/Amazon-Corretto-JP/Amazon-Corretto-25_JP/**'
-      - 'Java/Amazon-Corretto-JP/Amazon-Corretto-26_JP/**'
       - 'Java/Amazon-Corretto-JP/Amazon-Corretto-27_JP/**'
 jobs:
   push:
@@ -25,7 +24,6 @@ jobs:
           - '17'
           - '21'
           - '25'
-          - '26'
           - '27'
     steps:
       - uses: actions/checkout@v6
